@@ -13,26 +13,26 @@ source:
 
 build:
   number: 0
-  skip: True  # [win32]
   script: R CMD INSTALL --build .
   rpaths:
     - lib/R/lib/
     - lib/
 
-requirements:  # [not win32]
-  build:  # [not win32]
-    - r-base  # [not win32]
-    - posix  # [win64]
-    - m2w64-toolchain  # [win64]
-    - gcc  # [not win]
-    - r-matrix  # [not win32]
-  run:  # [not win32]
-    - r-base  # [not win32]
-    - r-matrix  # [not win32]
+requirements:
+  build:
+    - {{ compiler('c') }}  # [not win]
+    - r-base
+    - posix                # [win]
+    - m2w64-toolchain      # [win]
+    - r-matrix
+  run:
+    - r-base
+    - r-matrix
+    - m2w64-gcc-libs       # [win]
 
 test:
   commands:
-    - R -e "library('survival')"  # [not win]
+    - R -e "library('survival')"    # [not win]
     - R -e \"library('survival')\"  # [win]
 
 about:
