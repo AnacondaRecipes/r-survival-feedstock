@@ -10,8 +10,8 @@ package:
 source:
   fn: survival_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/survival_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/survival/survival_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/survival_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/survival/survival_{{ version }}.tar.gz
   sha256: f3797c344de93abd2ba8c89568770a13524a8b2694144ae55adec46921c8961d
 
 
