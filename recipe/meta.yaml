@@ -1,4 +1,4 @@
-{% set version = '2.42-3' %}
+{% set version = '2.42-6' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -8,11 +8,10 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: survival_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/survival_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/survival/survival_{{ version }}.tar.gz
-  sha256: a07732d7717f7a01543d95cf60cdc7cb5f46544cb7297ddd2a59bcfaddd2ea96
+  sha256: e33c44ee95961ff3c1bd1afe040d3059c143a72387d8e47fdbeba61c9d605daf
 
 build:
   merge_build_host: True  # [win]
@@ -30,6 +29,9 @@ requirements:
     - {{native}}toolchain        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
 
   host:
     - r-base
@@ -71,7 +73,7 @@ extra:
 # Maintainer: Terry M Therneau <therneau.terry@mayo.edu>
 # Priority: recommended
 # Package: survival
-# Version: 2.42-3
+# Version: 2.42-6
 # Depends: R (>= 2.13.0)
 # Imports: graphics, Matrix, methods, splines, stats, utils
 # LazyData: Yes
@@ -82,10 +84,10 @@ extra:
 # License: LGPL (>= 2)
 # URL: https://github.com/therneau/survival
 # NeedsCompilation: yes
-# Packaged: 2018-04-15 19:36:11 UTC; therneau
+# Packaged: 2018-07-12 12:21:01 UTC; therneau
 # Author: Terry M Therneau [aut, cre], Thomas Lumley [ctb, trl] (original S->R port and R maintainer until 2009)
 # Repository: CRAN
-# Date/Publication: 2018-04-16 18:25:59 UTC
+# Date/Publication: 2018-07-13 07:50:04 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
